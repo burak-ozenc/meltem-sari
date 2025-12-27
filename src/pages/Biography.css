@@ -1,0 +1,49 @@
+.biography {
+  max-width: 800px;
+  width: 100%;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.bio-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.bio-section {
+  line-height: 1.8;
+}
+
+.bio-line {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.bio-line strong {
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.bio-text {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.bio-text p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .bio-content {
+    gap: 1.5rem;
+  }
+  
+  .bio-line,
+  .bio-text p {
+    font-size: 0.95rem;
+  }
+}

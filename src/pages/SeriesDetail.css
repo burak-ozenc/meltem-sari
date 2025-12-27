@@ -1,0 +1,124 @@
+.series-detail-page {
+  min-height: 100vh;
+  padding: 4rem;
+  background-color: var(--bg-color);
+}
+
+.series-detail {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.series-header {
+  margin-bottom: 4rem;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  color: var(--heading-color);
+  transition: var(--transition-smooth);
+}
+
+.back-link:hover {
+  opacity: 0.6;
+  transform: translateX(-4px);
+}
+
+.series-detail-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.series-detail-year {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+
+.series-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin-top: 1.5rem;
+}
+
+.images-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.gallery-item {
+  animation: fadeIn 0.8s ease-out;
+  animation-fill-mode: backwards;
+}
+
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+.gallery-item:nth-child(4) { animation-delay: 0.4s; }
+.gallery-item:nth-child(5) { animation-delay: 0.5s; }
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.image-caption {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--heading-color);
+}
+
+.not-found a {
+  font-size: 1rem;
+  color: var(--heading-color);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  color: var(--heading-color);
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .series-detail-page {
+    padding: 2rem 1.5rem;
+  }
+  
+  .series-header {
+    margin-bottom: 3rem;
+  }
+  
+  .series-detail-title {
+    font-size: 1.5rem;
+  }
+  
+  .images-gallery {
+    gap: 3rem;
+  }
+}
