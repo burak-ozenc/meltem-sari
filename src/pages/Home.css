@@ -136,22 +136,47 @@
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+  .home {
+    height: 100dvh; /* Use dynamic viewport height on mobile */
+  }
+  
+  .video-container {
+    height: 100%;
+  }
+  
+  .intro-video {
+    width: auto;
+    height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
   .title-overlay .name-title {
     font-size: 2rem;
   }
   
   .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-    padding: 2rem 1.5rem;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    max-width: 280px;
+    height: 100vh;
+    padding: 6rem 2rem 2rem;
+    background-color: var(--bg-color);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .sidebar.mobile-open {
+    left: 0;
   }
   
   .nav-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
   }
   
   .sections-content {
@@ -162,5 +187,61 @@
   .content-section {
     min-height: auto;
     padding: 3rem 0;
+  }
+}
+
+/* Hamburger Menu Button */
+.hamburger-button {
+  display: none;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-color);
+  border: 1px solid var(--heading-color);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  transition: var(--transition-smooth);
+}
+
+.hamburger-button:hover {
+  background-color: var(--heading-color);
+}
+
+.hamburger-button span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--heading-color);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger-button:hover span {
+  background-color: var(--bg-color);
+}
+
+.hamburger-button span.open:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-button span.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-button span.open:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .hamburger-button {
+    display: flex;
   }
 }

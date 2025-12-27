@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { client, urlFor } from '../lib/sanity'
+import Lightbox from '../components/Lightbox'
 import './SeriesDetail.css'
 
 const SeriesDetail = () => {
   const { slug } = useParams()
   const [series, setSeries] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   
   useEffect(() => {
     const fetchSeries = async () => {
@@ -33,6 +36,27 @@ const SeriesDetail = () => {
     
     fetchSeries()
   }, [slug])
+  
+  const openLightbox = (index) => {
+    setCurrentImageIndex(index)
+    setLightboxOpen(true)
+  }
+  
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+  }
+  
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev === series.images.length - 1 ? 0 : prev + 1
+    )
+  }
+  
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => 
+      prev === 0 ? series.images.length - 1 : prev - 1
+    )
+  }
   
   if (loading) {
     return (
@@ -75,6 +99,8 @@ const SeriesDetail = () => {
                 alt={image.alt || `${series.title} - Image ${index + 1}`}
                 className="gallery-image"
                 loading="lazy"
+                onClick={() => openLightbox(index)}
+                style={{ cursor: 'pointer' }}
               />
               {image.caption && (
                 <p className="image-caption">{image.caption}</p>
@@ -82,6 +108,21 @@ const SeriesDetail = () => {
             </div>
           ))}
         </div>
+        
+        {/* Lightbox */}
+        {lightboxOpen && (
+          <Lightbox
+            images={series.images.map((img, idx) => ({
+              url: urlFor(img).width(2000).quality(95).url(),
+              alt: img.alt || `${series.title} - Image ${idx + 1}`,
+              caption: img.caption
+            }))}
+            currentIndex={currentImageIndex}
+            onClose={closeLightbox}
+            onNext={nextImage}
+            onPrev={prevImage}
+          />
+        )}
       </div>
     </div>
   )

@@ -10,6 +10,7 @@ const Home = () => {
   const [showTitle, setShowTitle] = useState(false)
   const [showContent, setShowContent] = useState(false)
   const [activeSection, setActiveSection] = useState('works')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   
   useEffect(() => {
     // Show title after a brief delay
@@ -57,12 +58,20 @@ const Home = () => {
     }, 100)
   }
   
+  const handleNavClick = (e) => {
+    // Close mobile menu when clicking a link
+    setMobileMenuOpen(false)
+  }
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+  
   return (
     <div className="home-container">
       {/* Video Section */}
       <div className="home">
         <div className="video-container" onClick={handleVideoClick}>
-          
           
           <div className="video-placeholder">
             <div className="placeholder-content">
@@ -73,7 +82,7 @@ const Home = () => {
                     loop
                     playsInline
                 >
-                    <source src="/Japan-1.mp4" type="video/mp4" />
+                    <source src="/Japan-1.mp4" type="video/mp4"/>
                 </video>
               <small>Click to explore works</small>
             </div>
@@ -90,12 +99,24 @@ const Home = () => {
       {/* Content Sections */}
       {showContent && (
         <div id="content-section" className="content-sections">
-          <nav className="sidebar">
+          {/* Hamburger Menu Button */}
+          <button 
+            className="hamburger-button" 
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+          >
+            <span className={mobileMenuOpen ? 'open' : ''}></span>
+            <span className={mobileMenuOpen ? 'open' : ''}></span>
+            <span className={mobileMenuOpen ? 'open' : ''}></span>
+          </button>
+          
+          <nav className={`sidebar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
             <ul className="nav-list">
               <li>
                 <a 
                   href="#works" 
                   className={activeSection === 'works' ? 'active' : ''}
+                  onClick={handleNavClick}
                 >
                   Works
                 </a>
@@ -104,6 +125,7 @@ const Home = () => {
                 <a 
                   href="#exhibitions" 
                   className={activeSection === 'exhibitions' ? 'active' : ''}
+                  onClick={handleNavClick}
                 >
                   Exhibitions
                 </a>
@@ -112,6 +134,7 @@ const Home = () => {
                 <a 
                   href="#press" 
                   className={activeSection === 'press' ? 'active' : ''}
+                  onClick={handleNavClick}
                 >
                   Press
                 </a>
@@ -120,6 +143,7 @@ const Home = () => {
                 <a 
                   href="#biography" 
                   className={activeSection === 'biography' ? 'active' : ''}
+                  onClick={handleNavClick}
                 >
                   Biography
                 </a>
@@ -128,6 +152,7 @@ const Home = () => {
                 <a 
                   href="#contact" 
                   className={activeSection === 'contact' ? 'active' : ''}
+                  onClick={handleNavClick}
                 >
                   Contact
                 </a>

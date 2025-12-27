@@ -70,6 +70,12 @@
   height: auto;
   display: block;
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-image:hover {
+  transform: scale(1.02);
 }
 
 .image-caption {
