@@ -69,3 +69,27 @@
     font-size: 0.9rem;
   }
 }
+.exhibition-images {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.exhibition-image-wrapper {
+  width: 100%;
+}
+
+.exhibition-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.exhibition-image-caption {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  margin-top: 0.4rem;
+  font-style: italic;
+}
