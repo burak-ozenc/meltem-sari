@@ -49,7 +49,7 @@ const Works = () => {
           >
             <div className="series-image-wrapper">
               <img 
-                src={urlFor(item.coverImage).width(800).quality(90).url()}
+                src={urlFor(item.coverImage).width(1600).quality(90).url()}
                 alt={item.title}
                 className="series-image"
                 loading="lazy"
