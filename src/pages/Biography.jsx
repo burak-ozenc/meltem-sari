@@ -74,3 +74,21 @@ const Biography = () => {
             ))}
           </div>
         )}
+        
+        {bio.currentLocation && (
+          <div className="bio-section">
+            <p className="bio-line">Lives in {bio.currentLocation}</p>
+          </div>
+        )}
+        
+        {bio.content && (
+          <div className="bio-section bio-text">
+            <PortableText value={bio.content} components={portableTextComponents} />
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default Biography
